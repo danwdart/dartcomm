@@ -1,91 +1,57 @@
 <?php
 namespace DartComm\Comm\Protocol;
 
-use DartComm\Model\Contact;
 use DartComm\Model\Identity;
-use DartComm\Model\Message;
+use DartComm\Model\Server;
 use DartComm\Exception\ConnectionFailed;
+use DartComm\Model\Mailbox;
+use Ddeboer\Imap\Server as ImapServer;
 
 class Imap implements ProtocolInterface
 {
+	private $_server;
 	private $_identity;
-	private $_strConnectionString;
+	private $_strFlags;
 	private $_imap;
 	private $_imapMailbox;
 
-	public function __construct(Identity $identity)
+	public function __construct(Server $server, Identity $identity)
 	{
 		$this->_identity = $identity;
-		$this->_strConnectionString = '{'.
-			$identity->Server.
-			':'.
-			$identity->Port.
-			(($identity->bSSL)?'/ssl':'').
-			(($identity->bRequireVerification)?'':'/novalidate-cert').
-			'}';
+		$this->_server = $server;
+		$this->_strFlags = (($server->bSSL)?'/ssl':'').
+			(($server->bRequireVerification)?'':'/novalidate-cert');
 
-		$this->_imap = \imap_open(
-			$this->_strConnectionString,
-			$identity->Username,
-			$identity->Password
+		$this->_imap = new ImapServer(
+			$server->Host,
+			$server->Port,
+			$this->_strFlags
 		);
 
-		if (!$this->_imap) {
+		try {
+			$this->_connection = $this->_imap->authenticate(
+				$this->_identity->Username,
+				$this->_identity->Password
+			);
+		} catch (\InvalidArgumentException $e) {
 			throw new ConnectionFailed($this->_strConnectionString);
 		}
 	}
 
-	public function __destruct()
+	public function getMailbox($strName)
 	{
-		\imap_close($this->_imap);
-		\imap_close($this->_imapMailbox);
-	}
-
-	public function deleteOne($mixedId)
-	{
-
-	}
-
-	public function getAll($strMailbox, $intSkip, $intCount)
-	{
-		$this->_imapMailbox = \imap_open(
-			$strMailbox,
-			$this->_identity->Username,
-			$this->_identity->Password
-		);
-		for ($i = $intSkip+1; $i <= $intSkip + $intCount + 1; $i++) {
-			$objHeader = @\imap_headerinfo($this->_imapMailbox, $i);
-			if (false !== $objHeader)
-				yield $objHeader;
-		}
+		return new Mailbox($this->_connection->getMailbox($strName));
 	}
 
 	public function getMailboxes()
 	{
-		return \imap_listmailbox($this->_imap, $this->_strConnectionString, '*');
+		foreach($this->_connection->getMailboxes() as $imapMailbox) {
+			yield new Mailbox($imapMailbox);
+		}
 	}
 
 	public function getMailboxNames()
 	{
-		$mbs = $this->getMailboxes();
-		foreach($mbs as $strName) {
-			yield str_replace($this->_strConnectionString, '', $strName);
-		}
-	}
-
-	public function getStructure($mixedId)
-	{
-		return \imap_fetchstructure($this->_imapMailbox, $mixedId);
-
-	}
-
-	public function getPart($mixedId, $intPart)
-	{
-		return \imap_fetchbody($this->_imapMailbox, $mixedId, $intPart);
-	}
-
-	public function send(Contact $contact, Message $message)
-	{
-		
+		return $this->_connection->getMailboxNames();
 	}
 }

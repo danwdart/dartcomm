@@ -1,20 +1,24 @@
 <?php
 namespace DartComm\Model;
 
+use Ddeboer\Imap\Message\EmailAddress;
+
 class Contact extends Abstract
 {
-	public function __construct($mixedId)
-	{
+	private $_emailaddress;
 
+	public function __construct(EmailAddress $address)
+	{
+		$this->_emailaddress = $address;
 	}
 
 	public function getDisplayName()
 	{
-
+		return $this->_emailaddress->getName();
 	}
 
-	public function getId()
+	public function getEmailAddress()
 	{
-		
+		return $this->_emailaddress->getAddress();
 	}
 }
