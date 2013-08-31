@@ -4,6 +4,7 @@ namespace DartComm\Comm\Protocol;
 use DartComm\Model\Identity;
 use DartComm\Model\Server;
 use DartComm\Exception\ConnectionFailed;
+use DartComm\Exception\AuthenticationFailed;
 use DartComm\Model\Mailbox;
 use Ddeboer\Imap\Server as ImapServer;
 
@@ -22,19 +23,23 @@ class Imap implements ProtocolInterface
 		$this->_strFlags = (($server->bSSL)?'/ssl':'').
 			(($server->bRequireVerification)?'':'/novalidate-cert');
 
-		$this->_imap = new ImapServer(
-			$server->Host,
-			$server->Port,
-			$this->_strFlags
-		);
+		try {
+			$this->_imap = new ImapServer(
+				$server->Host,
+				$server->Port,
+				$this->_strFlags
+			);
+		} catch (\InvalidArgumentException $e) {
+			throw new ConnectionFailed($this->_strConnectionString);
+		}
 
 		try {
 			$this->_connection = $this->_imap->authenticate(
 				$this->_identity->Username,
 				$this->_identity->Password
 			);
-		} catch (\InvalidArgumentException $e) {
-			throw new ConnectionFailed($this->_strConnectionString);
+		} catch (\Ddeboer\Imap\Exception\AuthenticationFailedException $e) {
+			throw new AuthenticationFailed();
 		}
 	}
 
