@@ -1,0 +1,18 @@
+extends layout
+block main
+  .col-lg-3
+    .row
+      a.btn.btn-success New Account
+      table.table.table-striped
+        thead
+          tr
+            th Account
+        tbody#accounts(data-bind="template: { name: 'accountTableRowTemplate', foreach: TableRows, as: 'Row' }")
+  .col-lg-9
+    p Accounts
+  script#accountTableRowTemplate(type='text/html')
+    tr
+      td(data-bind='text: type')
+block userjs
+  != js('settings')
+  != js('socket')

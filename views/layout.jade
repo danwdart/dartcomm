@@ -13,10 +13,17 @@ head
   block usercss
   
 body
-  header.text-center
-    h1 Welcome to DartComm
-  main.col-lg-10.col-lg-offset-1
-    block main
+  .container
+    header.text-center
+      .col-lg-10
+        h1 Welcome to DartComm
+      .col-lg-2
+        a.btn.btn-info(href='settings')
+          i.fa.fa-cog
+        a.btn.btn-success
+          i.fa.fa-sign-in
+    main.col-lg-12
+      block main
   +ko      
   +js('/js/knockout.mapping-latest.js')
   +js('/socket.io/socket.io.js')
