@@ -1,0 +1,31 @@
+extends layout
+block main
+  .col-lg-3
+    .row
+      a.btn.btn-success New Message
+      table.table.table-striped
+        thead
+          tr
+            th Send to...
+        tbody#contacts(data-bind="template: { name: 'contactTableRowTemplate', foreach: TableRows, as: 'Row' }")
+  .col-lg-9
+    .row
+      table.table.table-striped
+        thead
+          tr
+            th Date
+            th From
+            th Subject
+            th Flags
+        tbody#messages(data-bind="template: { name: 'tableRowTemplate', foreach: TableRows, as: 'Row' }")
+  script#contactTableRowTemplate(type='text/html')
+    tr
+      td(data-bind='text: name')
+  script#tableRowTemplate(type='text/html')
+    tr
+      td(data-bind='text: date')
+      td(data-bind='text: from')
+      td(data-bind='text: subject')
+block userjs
+  != js('index')
+  != js('socket')

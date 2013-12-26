@@ -1,0 +1,30 @@
+include mixins
+!!! 5
+head
+  meta(charset='utf-8')
+  title DartComm
+  meta(name='description', content='Communicate all of the things')
+  meta(name='author', content='Dan Dart')
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  +jq
+  +bs
+  +fa
+  != css('dartcomm')
+  block usercss
+  
+body
+  .container
+    header.text-center
+      .col-lg-10
+        h1 Welcome to DartComm
+      .col-lg-2
+        a.btn.btn-info(href='settings')
+          i.fa.fa-cog
+        a.btn.btn-success
+          i.fa.fa-sign-in
+    main.col-lg-12
+      block main
+  +ko      
+  +js('/js/knockout.mapping-latest.js')
+  +js('/socket.io/socket.io.js')
+  block userjs
