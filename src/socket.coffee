@@ -1,5 +1,5 @@
 io = require 'socket.io'
-# xmpp = require 'lib/server/xmpp'
+xmpp = require './lib/server/xmpp'
 
 module.exports = (server)->
 	io = io.listen(server)
