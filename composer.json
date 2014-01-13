@@ -1,0 +1,24 @@
+{
+    "name": "dandart/dartcomm",
+    "description": "Communicate over all of the things",
+    "license": "MIT",
+    "keywords": [
+        "communicate"
+    ],
+    "autoload": {
+        "classmap": [
+            "module/Application/"
+        ]
+    },
+    "homepage": "http://dartcomm.com/",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">2.2.0rc1",
+        "ddeboer/imap": "dev-master",
+        "andreyknupp/smtp-client": "dev-master",
+        "bandroidx/xmpphp": "1.0.*@dev",
+        "xi/sms": "dev-infobip-v3",
+        "facebook/php-sdk": "dev-master",
+        "j7mbo/twitter-api-php": "dev-master"
+    }
+}
