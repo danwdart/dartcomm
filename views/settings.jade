@@ -9,10 +9,25 @@ block main
             th Account
         tbody#accounts(data-bind="template: { name: 'accountTableRowTemplate', foreach: TableRows, as: 'Row' }")
   .col-lg-9
-    p Accounts
-  script#accountTableRowTemplate(type='text/html')
-    tr
-      td(data-bind='text: type')
+    h2 Add a new account
+    .row
+      h1
+        .col-lg-3
+          a#email(href='#')
+            i.fa.fa-inbox
+        .col-lg-3
+          a#twitter(href='#')
+            i.fa.fa-twitter
+        .col-lg-3
+          a#facebook(href='/auth/facebook')
+            i.fa.fa-facebook
+        .col-lg-3
+          a#linkedin(href='#')
+            i.fa.fa-linkedin
+
+  // script#accountTableRowTemplate(type='text/html')
+  // tr
+  //  td(data-bind='text: type')
 block userjs
   != js('settings')
   != js('socket')

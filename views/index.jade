@@ -10,6 +10,18 @@ block main
         tbody#contacts(data-bind="template: { name: 'contactTableRowTemplate', foreach: TableRows, as: 'Row' }")
   .col-lg-9
     .row
+      a.btn.btn-info(href='/') 
+        i.fa.fa-inbox  Inbox
+      &nbsp;
+      a.btn.btn-info(href='/') 
+        i.fa.fa-inbox  Anotherbox
+      &nbsp;
+      a.btn.btn-info(href='/') 
+        i.fa.fa-inbox  Yetanotherbox
+      &nbsp;
+      a.btn.btn-info(href='/') 
+        i.fa.fa-inbox  Evenmoreboxes
+    .row
       table.table.table-striped
         thead
           tr

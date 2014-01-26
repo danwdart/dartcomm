@@ -22,7 +22,7 @@ module.exports = (app) ->
     routeMvc(req.params.controller, req.params.method, req, res, next)
 
   app.all '/:controller/:method/:id', (req, res, next) ->
-    routeMvc(req.params.controller, req.params.method, req, res, next)
+    routeMvc(req.params.controller, req.params.method + '_' + req.params.id, req, res, next)
 
   app.all '/*', (req, res) ->
     console.warn "error 404: ", req.url
