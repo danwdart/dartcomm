@@ -25,7 +25,8 @@ app.use express.session(
   store: store
 )
 
-require('./lib/passport')(app)
+require('./lib/passport/facebook')(app)
+require('./lib/passport/twitter')(app)
 
 app.set 'view engine', 'jade'
 
