@@ -1,8 +1,7 @@
 mongoose = require 'mongoose'
 
 User = new mongoose.Schema(
-  serverid: String,
-  username: String,
+  _id: String,
   password: String
 )
 
