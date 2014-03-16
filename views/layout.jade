@@ -15,7 +15,8 @@ head
 body
   .container
     header.text-center
-      .col-lg-10
+      .col-lg-2 &nbsp;
+      .col-lg-8
         h1 Welcome to DartComm
       .col-lg-2
         a.btn.btn-primary(href='/')
@@ -23,7 +24,7 @@ body
         a.btn.btn-info(href='/settings')
           i.fa.fa-cog
         a.btn.btn-success
-          i.fa.fa-sign-in
+          i.fa.fa-sign-in(href='/login')
     main.col-lg-12
       block main
   +ko      

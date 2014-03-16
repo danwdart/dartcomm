@@ -2,8 +2,8 @@ passport = require 'passport'
 TwitterStrategy = require('passport-twitter').Strategy
 
 passport.use(new TwitterStrategy({
-		consumerKey: 'a'
-		consumerSecret: 'b'
+		consumerKey: 'o8UyiBth83UKXxZHV0QePA'
+		consumerSecret: 'qiePiTAUvvm54y2A13nRCrPp3gPrzQ1EIA34UplQ2g'
 		callbackURL: 'http://localhost:3000/auth/twitter/callback'
 	},
 	(token, tokenSecret, profile, done) ->
@@ -25,3 +25,5 @@ module.exports = (app) ->
 		successRedirect: '/settings'
 		failureRedirect: '/login'
 	)
+
+

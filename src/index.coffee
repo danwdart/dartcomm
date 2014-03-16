@@ -25,9 +25,6 @@ app.use express.session(
   store: store
 )
 
-require('./lib/passport/facebook')(app)
-require('./lib/passport/twitter')(app)
-
 app.set 'view engine', 'jade'
 
 app.use express.urlencoded()
@@ -36,6 +33,8 @@ app.use express.json()
 app.use (err, req, res, next) ->
   res.send (500, { error: err.message })
 
+require('./lib/passport/facebook')(app)
+require('./lib/passport/twitter')(app)
 routes = require './routes'
 routes(app)
 
