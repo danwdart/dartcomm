@@ -3,12 +3,17 @@ stylus = require 'stylus'
 assets = require 'connect-assets'
 mongoose = require 'mongoose'
 http = require 'http'
+serveStatic = require 'serve-static'
+cookieParser = require 'cookie-parser'
+session = require 'express-session'
+bodyParser = require 'body-parser'
 
 app = express()
 
 config = require "./config"
-app.configure 'production', 'development', 'testing', ->
-  config.setEnvironment app.settings.env
+
+process.env['NODE_ENV'] = 'production' if process.env['NODE_ENV'] is undefined
+config.setEnvironment process.env['NODE_ENV']
 
 if app.settings.env != 'production'
   mongoose.connect 'mongodb://localhost/dartcomm'
@@ -16,19 +21,24 @@ else
   console.log('If you are running in production, you may want to modify the mongoose connect path')
 
 app.use assets()
-app.use express.static(process.cwd() + '/public')
+app.use serveStatic(__dirname + '/public')
 
-store = new express.session.MemoryStore
-app.use express.cookieParser()
-app.use express.session(
+store = new session.MemoryStore
+app.use cookieParser()
+app.use session(
   secret: 'shhh'
   store: store
 )
 
 app.set 'view engine', 'jade'
 
-app.use express.urlencoded()
-app.use express.json()
+app.use bodyParser.urlencoded(
+	extended: true
+)
+app.use bodyParser.json()
+
+app.use (req, res, next) ->
+	next()
 
 app.use (err, req, res, next) ->
   res.send (500, { error: err.message })
@@ -42,5 +52,5 @@ server = http.createServer app
 server.port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 module.exports = server
 
-socket = require './socket'
-socket(server)
+socket = require './socket' 
+socket server
