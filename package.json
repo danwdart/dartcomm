@@ -1,47 +1,51 @@
 {
-	"name": "DartComm", 
-	"version": "0.0.1",
-	"author": "Dan Dart <dartcomm@dandart.co.uk> (http://dandart.co.uk)",
-  	"scripts": {
-	    "install": "node node_modules/coffee-script/bin/cake build",
-	    "start": "node server.js",
-	    "test": "mocha --require should --compilers coffee:coffee-script --colors"
-	}, 
-	"dependencies": {
-		"express": "3.x",
-		"coffee-script": "1.6.x",
-		"jade": "0.30.x",
-		"connect-assets": "2.4.x",
-		"stylus": "0.32.x",
-		"nib": "0.9.x",
-		"markdown": "0.4.0",
-		"which": "1.0.5",
-		"mongoose": "3.6.x",
-		"wrench": "1.5.1",
-		"imap": "*",
-        "node-xmpp": "*",
-        "socket.io": "*",
-        "passport": "*",
-        "passport-facebook": "*",
-        "passport-twitter": "*",
-        "passport-google": "*",
-        "passport-linkedin": "*"
-	}, 
-	"devDependencies": {
-		"coffee-script": "*",
-	    "mocha": "*",
-	    "should": "*",
-	    "supertest": "*",
-	    "request": "*",
-	    "supervisor": "*",
-	    "docco-husky": "*",
-	    "puts": "*",
-	    "node-inspector": "*",
-	    "ejs": "*"
-	}, 
-	"engines": {
-		"node": "~0.10.x",
-		"npm": "1.2.x"
-	},
-	"license": "AGPL3"
+  "name": "DartComm",
+  "version": "0.0.1",
+  "author": "Dan Dart <dartcomm@dandart.co.uk> (http://dandart.co.uk)",
+  "scripts": {
+    "install": "node node_modules/coffee-script/bin/cake build",
+    "start": "node server.js",
+    "test": "mocha --require should --compilers coffee:coffee-script --colors"
+  },
+  "dependencies": {
+    "express": "~4",
+    "coffee-script": "1.6.x",
+    "jade": "0.30.x",
+    "connect-assets": "2.4.x",
+    "stylus": "0.32.x",
+    "nib": "0.9.x",
+    "markdown": "0.4.0",
+    "which": "1.0.5",
+    "mongoose": "3.6.x",
+    "wrench": "1.5.1",
+    "imap": "*",
+    "node-xmpp": "*",
+    "socket.io": "*",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-twitter": "*",
+    "passport-google": "*",
+    "passport-linkedin": "*"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*",
+    "request": "*",
+    "supervisor": "*",
+    "docco-husky": "*",
+    "puts": "*",
+    "node-inspector": "*",
+    "ejs": "*",
+    "serve-static": "^1.2.3",
+    "cookie-parser": "^1.3.1",
+    "express-session": "^1.5.0",
+    "body-parser": "^1.4.3"
+  },
+  "engines": {
+    "node": "~0.10.x",
+    "npm": "1.2.x"
+  },
+  "license": "AGPL3"
 }
