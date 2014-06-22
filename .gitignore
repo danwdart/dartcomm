@@ -1,5 +1,6 @@
 nbproject
 builtAssets/
+public/views/
 ._*
 .~lock.*
 .buildpath
