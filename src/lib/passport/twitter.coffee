@@ -7,7 +7,10 @@ passport.use(new TwitterStrategy({
 		callbackURL: 'http://localhost:3000/auth/twitter/callback'
 	},
 	(token, tokenSecret, profile, done) ->
-		return done null, 1
+		return done null,
+			profile
+			token
+			tokenSecret
 ))
 
 passport.serializeUser (user, done)->
