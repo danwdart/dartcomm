@@ -90,6 +90,7 @@ task 'dev', 'start dev env', ->
   coffee.stderr.pipe process.stderr
   log 'Watching coffee files', green
 
+  # watch_jade
   jadeOptions = ['-D', '-c', '-w', '-P', 'views', '--out', 'public/views']
   cmd = which.sync 'jade'
   jade = spawn cmd, jadeOptions
@@ -118,6 +119,15 @@ task 'debug', 'start debug env', ->
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
   log 'Watching coffee files', green
+
+  # watch_jade
+  jadeOptions = ['-D', '-c', '-w', '-P', 'views', '--out', 'public/views']
+  cmd = which.sync 'jade'
+  jade = spawn cmd, jadeOptions
+  jade.stdout.pipe process.stdout
+  jade.stderr.pipe process.stderr
+  log 'Watching jade files', green
+
   # run debug mode
   app = spawn 'node', [
     '--debug',
