@@ -13,19 +13,19 @@ head
   block usercss
   
 body
-  .container
-    header.text-center
+  .container-fluid
+    header.text-center.row
       .col-lg-2 &nbsp;
       .col-lg-8
-        h1 Welcome to DartComm
+        h4
+          a(href="/") dartcomm
       .col-lg-2
         a.btn.btn-primary(href='/')
           i.fa.fa-inbox
         a.btn.btn-info(href='/settings')
           i.fa.fa-cog
-        a.btn.btn-success
-          i.fa.fa-sign-in(href='/login')
-    main.col-lg-12
+        include loginstatus
+    main.col-lg-12.row
       block main
   +ko      
   +js('/js/knockout.mapping-latest.js')
