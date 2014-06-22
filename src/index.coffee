@@ -7,6 +7,7 @@ serveStatic = require 'serve-static'
 cookieParser = require 'cookie-parser'
 session = require 'express-session'
 bodyParser = require 'body-parser'
+flash = require 'express-flash'
 
 app = express()
 
@@ -21,7 +22,9 @@ else
   console.log('If you are running in production, you may want to modify the mongoose connect path')
 
 app.use assets()
-app.use serveStatic(__dirname + '/public')
+app.use serveStatic(__dirname + '/../public')
+
+app.locals.pretty = true
 
 store = new session.MemoryStore
 app.use cookieParser()
@@ -29,6 +32,7 @@ app.use session(
   secret: 'shhh'
   store: store
 )
+app.use flash()
 
 app.set 'view engine', 'jade'
 
@@ -37,11 +41,21 @@ app.use bodyParser.urlencoded(
 )
 app.use bodyParser.json()
 
-app.use (req, res, next) ->
-	next()
-
 app.use (err, req, res, next) ->
   res.send (500, { error: err.message })
+
+app.use (req, res, next) ->
+  
+  process.on 'uncaughtException', (err) ->
+    console.log 'Caught exception: ' + err
+    res.send 'Caught exception: ' + err
+    res.statusCode = 500
+
+  if '/login' is not req.url and !req.session.user
+  	res.redirect '/login'
+  else
+  	res.locals.user = req.session.user
+  	next()
 
 require('./lib/passport/facebook')(app)
 require('./lib/passport/twitter')(app)
