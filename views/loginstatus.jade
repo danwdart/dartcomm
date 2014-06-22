@@ -1,4 +1,6 @@
-if loggedin
-	a.btn.btn-failure Logout
-else
-	a.btn.btn-primary Login
+- if(user)
+  a.btn.btn-danger(href='/login/logout')
+    i.fa.fa-sign-out
+- else
+  a.btn.btn-success(href='/login')
+    i.fa.fa-sign-in
