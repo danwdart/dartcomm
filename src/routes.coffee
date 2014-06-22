@@ -31,11 +31,6 @@ module.exports = (app) ->
 
 routeMvc = (controllerName, methodName, req, res, next) ->
 
-  process.on 'uncaughtException', (err) ->
-    console.log 'Caught exception: ' + err
-    res.send 'Caught exception: ' + err
-    res.statusCode = 500
-
   methodName = methodName.toLowerCase()
   methodName = req.method.toLowerCase() + methodName.toCamel();
   controllerName = 'index' if not controllerName?
