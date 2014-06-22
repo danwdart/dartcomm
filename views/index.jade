@@ -7,7 +7,9 @@ block main
         thead
           tr
             th Send to...
-        tbody#contacts(data-bind="template: { name: 'contactTableRowTemplate', foreach: TableRows, as: 'Row' }")
+        tbody#contacts(data-bind="foreach: TableRows")
+          tr
+            td(data-bind='text: name')
   .col-lg-9
     .row
       a.btn.btn-info(href='/') 
@@ -29,15 +31,11 @@ block main
             th From
             th Subject
             th Flags
-        tbody#messages(data-bind="template: { name: 'tableRowTemplate', foreach: TableRows, as: 'Row' }")
-  script#contactTableRowTemplate(type='text/html')
-    tr
-      td(data-bind='text: name')
-  script#tableRowTemplate(type='text/html')
-    tr
-      td(data-bind='text: date')
-      td(data-bind='text: from')
-      td(data-bind='text: subject')
+        tbody#messages(data-bind="foreach: TableRows")
+          tr
+            td(data-bind='text: date')
+            td(data-bind='text: from')
+            td(data-bind='text: subject')
 block userjs
   != js('index')
   != js('socket')
