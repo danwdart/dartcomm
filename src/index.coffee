@@ -42,7 +42,9 @@ app.use bodyParser.urlencoded(
 app.use bodyParser.json()
 
 app.use (err, req, res, next) ->
-  res.send (500, { error: err.message })
+  res.send 500, {
+      error: err.message
+  }
 
 app.use (req, res, next) ->
   
