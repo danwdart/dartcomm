@@ -1,7 +1,8 @@
-require 'node-xmpp'
+XMPPClient = require 'node-xmpp-client'
+ltx = require 'ltx'
 
 module.exports = (socket) ->	
-	client = new xmpp.Client(
+	client = new XMPPClient(
 		jid: 'dandart@gmail.com'
 		password: 'my password'
 		server: 'talk.google.com'
@@ -9,14 +10,14 @@ module.exports = (socket) ->
 	)
 	client.on 'online', ->
 		socket.on 'xmppmessage', (data)->
-			chat = new xmpp.Element 'message',
+			chat = new ltx.Element 'message',
 				to: data.to
 				type: 'chat'
 			.c 'body'
 			.t data.message
 			client.send chat
 		console.log 'online'
-		client.send new xmpp.Element 'presence'
+		client.send new ltx.Element 'presence'
 		client.on 'stanza', (stanza) ->
 			if stanza.attrs.type is 'error'
 				return console.log stanza.toString() + 'xmpp error message'
@@ -48,7 +49,7 @@ module.exports = (socket) ->
 				return console.log "Somebody set us up the bomb."
 			else
 				return console.log 'unknown type: '+stanza.attrs.type + stanza.toString()		
-			#msg = new xmpp.Element 'message', 
+			#msg = new ltx.Element 'message', 
 			#	to: stanza.from
 			#	type: 'chat'
 			#.c('body')
