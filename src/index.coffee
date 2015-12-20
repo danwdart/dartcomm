@@ -8,6 +8,7 @@ cookieParser = require 'cookie-parser'
 session = require 'express-session'
 bodyParser = require 'body-parser'
 flash = require 'express-flash'
+jade = require 'jade'
 
 app = express()
 
@@ -34,6 +35,7 @@ app.use session(
 )
 app.use flash()
 
+app.engine '.jade', jade.__express
 app.set 'view engine', 'jade'
 
 app.use bodyParser.urlencoded(
