@@ -24,13 +24,7 @@ build = (callback) ->
   coffee = spawn cmd, options
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
-  # coffee.on 'exit', (status) -> callback?() if status is 0
-
-  jadeOptions = ['-D', '-c', '-P', 'views', '--out', 'public/views']
-  cmd = which.sync 'jade'
-  jade = spawn cmd, jadeOptions
-  jade.stdout.pipe process.stdout
-  jade.stderr.pipe process.stderr
+  coffee.on 'exit', (status) -> callback?() if status is 0
 
 # mocha test
 test = (callback) ->
@@ -90,14 +84,6 @@ task 'dev', 'start dev env', ->
   coffee.stderr.pipe process.stderr
   log 'Watching coffee files', green
 
-  # watch_jade
-  jadeOptions = ['-D', '-c', '-w', '-P', 'views', '--out', 'public/views']
-  cmd = which.sync 'jade'
-  jade = spawn cmd, jadeOptions
-  jade.stdout.pipe process.stdout
-  jade.stderr.pipe process.stderr
-  log 'Watching jade files', green
-
   # watch_js
   supervisor = spawn 'node', [
     './node_modules/supervisor/lib/cli-wrapper.js',
@@ -119,15 +105,7 @@ task 'debug', 'start debug env', ->
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
   log 'Watching coffee files', green
-
-  # watch_jade
-  jadeOptions = ['-D', '-c', '-w', '-P', 'views', '--out', 'public/views']
-  cmd = which.sync 'jade'
-  jade = spawn cmd, jadeOptions
-  jade.stdout.pipe process.stdout
-  jade.stderr.pipe process.stderr
-  log 'Watching jade files', green
-
+  
   # run debug mode
   app = spawn 'node', [
     '--debug',
