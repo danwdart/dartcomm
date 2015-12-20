@@ -19,7 +19,7 @@
     "mongoose": "3.6.x",
     "wrench": "1.5.1",
     "imap": "*",
-    "node-xmpp": "*",
+    "node-xmpp-client": "*",
     "socket.io": "*",
     "passport": "*",
     "passport-facebook": "*",
