@@ -18,7 +18,7 @@
     "nib": "0.9.x",
     "markdown": "0.4.0",
     "which": "1.0.5",
-    "mongoose": "4.2.4",
+    "mongoose": "4.3.6",
     "wrench": "1.5.1",
     "imap": "*",
     "node-xmpp-client": "*",
@@ -33,7 +33,7 @@
     "express-session": "^1.5.0",
     "body-parser": "^1.4.3",
     "express-flash": "0.0.2",
-    "snyk": "^1.27.1"
+    "snyk": "^1.28.0"
   },
   "devDependencies": {
     "coffee-script": "*",
