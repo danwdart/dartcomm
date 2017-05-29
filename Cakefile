@@ -90,7 +90,7 @@ task 'dev', 'start dev env', ->
     '-w',
     '.app,views', 
     '-e', 
-    'js|jade', 
+    'js|pug', 
     'server'
   ]
   supervisor.stdout.pipe process.stdout
