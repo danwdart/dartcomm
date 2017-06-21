@@ -28,7 +28,7 @@
     "passport-linkedin": "*",
     "passport-twitter": "*",
     "serve-static": "^1.2.3",
-    "snyk": "^1.28.0",
+    "snyk": "^1.35.0",
     "socket.io": "*",
     "stylus": "0.54.x",
     "which": "1.2.14",
