@@ -1,5 +1,14 @@
-Dart Comm
-A Communications Programme.
+# Dart Comm
+
+## A Communications Programme.
+
+### DEPRECATED.
+
+This program is deprecated in favour of https://github.com/kathiedart/pcomm
+
+The items in this program are severely deprecated and are only kept around for legacy purposes.
+
+## Ideas
 
 This program should be able to:
 * Run in a browser or terminal.
@@ -20,6 +29,3 @@ This program should be able to:
 * Be able to hook into picture sharing services like Deviantart/Photobucket
 * Be able to hook into audio services like Last.fm/libre.fm
 * Expose an API by itself
-* Generally be awesome.
-
-This is going to take some work but will be awesome in the end.
