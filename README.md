@@ -4,7 +4,7 @@
 
 ### DEPRECATED.
 
-This program is deprecated in favour of https://github.com/kathiedart/pcomm
+This program is deprecated in favour of https://github.com/danwdart/pcomm
 
 The items in this program are severely deprecated and are only kept around for legacy purposes.
 
