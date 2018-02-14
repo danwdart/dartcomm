@@ -7,7 +7,8 @@
     "start": "node server.js",
     "test": "mocha --require should --compilers coffee:coffee-script --colors",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -27,7 +28,7 @@
     "passport-linkedin": "*",
     "passport-twitter": "*",
     "serve-static": "^1.13.1",
-    "snyk": "^1.69.5",
+    "snyk": "^1.69.7",
     "socket.io": "*",
     "stylus": "0.54.x",
     "which": "1.3.0",
