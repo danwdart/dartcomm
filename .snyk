@@ -1,11 +1,70 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.10.1
+version: v1.10.2
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:mime:20170907':
     - connect-assets > mime:
         reason: None given
         expires: '2018-03-16T10:44:34.078Z'
+  'npm:hoek:20180212':
+    - node-inspector > v8-debug > node-pre-gyp > hawk > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.557Z'
+    - node-inspector > v8-profiler > node-pre-gyp > hawk > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.557Z'
+    - node-inspector > v8-debug > node-pre-gyp > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.557Z'
+    - node-inspector > v8-profiler > node-pre-gyp > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.557Z'
+    - node-inspector > v8-debug > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.557Z'
+    - node-inspector > v8-profiler > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-debug > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-profiler > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-debug > node-pre-gyp > request > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-profiler > node-pre-gyp > request > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-debug > node-pre-gyp > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-profiler > node-pre-gyp > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-debug > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-profiler > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-debug > node-pre-gyp > request > hawk > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > v8-profiler > node-pre-gyp > request > hawk > hoek:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+  'npm:lodash:20180130':
+    - connect-assets > mincer > lodash:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > biased-opener > browser-launcher2 > lodash:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
+    - node-inspector > biased-opener > browser-launcher2 > plist > xmlbuilder > lodash:
+        reason: None given
+        expires: '2018-03-28T17:48:34.558Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:uglify-js:20151024':
