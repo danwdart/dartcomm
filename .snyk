@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.10.2
+version: v1.12.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:mime:20170907':
@@ -76,3 +76,8 @@ patch:
   'npm:ms:20170412':
     - socket.io > socket.io-adapter > debug > ms:
         patched: '2017-06-21T09:10:33.375Z'
+  'npm:lodash:20180130':
+    - connect-assets > mincer > lodash:
+        patched: '2018-07-02T23:26:41.624Z'
+    - node-inspector > biased-opener > browser-launcher2 > plist > xmlbuilder > lodash:
+        patched: '2018-07-02T23:26:41.624Z'
