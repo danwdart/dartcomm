@@ -39,7 +39,7 @@
     "docco-husky": "*",
     "ejs": "^2.6.1",
     "mocha": "^5.2.0",
-    "node-inspector": "*",
+    "node-inspector": "1.1.2",
     "pug": "^2.0.3",
     "puts": "*",
     "request": "^2.87.0",
