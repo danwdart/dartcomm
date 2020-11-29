@@ -19,7 +19,7 @@
     "express-session": "^1.17.1",
     "imap": "*",
     "markdown": "0.5.0",
-    "mongoose": "5.10.17",
+    "mongoose": "5.10.18",
     "nib": "1.1.x",
     "node-xmpp-client": "^3.2.0",
     "passport": "*",
