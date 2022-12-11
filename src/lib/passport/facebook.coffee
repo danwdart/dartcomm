@@ -7,7 +7,7 @@ passport.use(new FacebookStrategy({
 		callbackURL: 'http://localhost:3000/auth/facebook/callback'
 	},
 	(accessToken, refreshToken, profile, done) ->
-		return done null, 
+		return done null,
 			profile: profile
 			accessToken: accessToken
 			refreshToken: refreshToken

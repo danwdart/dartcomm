@@ -49,7 +49,7 @@ app.use (err, req, res, next) ->
   }
 
 app.use (req, res, next) ->
-  
+
   process.on 'uncaughtException', (err) ->
     console.log 'Caught exception: ' + err
     res.send 'Caught exception: ' + err
@@ -70,5 +70,5 @@ server = http.createServer app
 server.port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 module.exports = server
 
-socket = require './socket' 
+socket = require './socket'
 socket server

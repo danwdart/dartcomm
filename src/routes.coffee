@@ -3,7 +3,7 @@ String::toCamel = ->
     $1.toUpperCase().replace "-", ""
 
 module.exports = (app) ->
-  
+
   # simple session authorization
   checkAuth = (req, res, next) ->
     unless req.session.authorized
@@ -11,7 +11,7 @@ module.exports = (app) ->
       res.render '401', 401
     else
       next()
-  
+
   app.all '/', (req, res, next) ->
     routeMvc('index', 'index', req, res, next)
 

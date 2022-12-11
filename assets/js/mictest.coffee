@@ -53,7 +53,7 @@ $(document).ready ->
 
 			microphone.connect mod
 			gain.connect context.destination
-			
+
 			mod.noteOn 0
 
 	modvoice()

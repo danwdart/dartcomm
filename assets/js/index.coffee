@@ -22,7 +22,7 @@ class TableRowViewModel
         ko.mapping.fromJS data, {}, this
         @status = ko.computed
     read: ->
-        if 1 is @disabled 
+        if 1 is @disabled
             'btn btn-danger disabled'
             'btn btn-success disabled'
 

@@ -1,7 +1,7 @@
 XMPPClient = require 'node-xmpp-client'
 ltx = require 'ltx'
 
-module.exports = (socket) ->	
+module.exports = (socket) ->
 	client = new XMPPClient(
 		jid: 'dandart@gmail.com'
 		password: 'my password'
@@ -48,8 +48,8 @@ module.exports = (socket) ->
 			else if stanza.attrs.type is 'get'
 				return console.log "Somebody set us up the bomb."
 			else
-				return console.log 'unknown type: '+stanza.attrs.type + stanza.toString()		
-			#msg = new ltx.Element 'message', 
+				return console.log 'unknown type: '+stanza.attrs.type + stanza.toString()
+			#msg = new ltx.Element 'message',
 			#	to: stanza.from
 			#	type: 'chat'
 			#.c('body')

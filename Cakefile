@@ -13,7 +13,7 @@ reset = '\x1B[0m'
 
 testCmd = pkg.scripts.test
 startCmd = pkg.scripts.start
-  
+
 log = (message, color, explanation) ->
   console.log color + message + reset + ' ' + (explanation or '')
 
@@ -42,9 +42,9 @@ test = (callback) ->
     './server'
   ]
   try
-    cmd = which.sync 'mocha' 
+    cmd = which.sync 'mocha'
     spec = spawn cmd, options
-    spec.stdout.pipe process.stdout 
+    spec.stdout.pipe process.stdout
     spec.stderr.pipe process.stderr
     spec.on 'exit', (status) -> callback?() if status is 0
   catch err
@@ -56,7 +56,7 @@ task 'docs', 'Generate annotated source code with Docco', ->
   files = ("src/#{file}" for file in files when /\.coffee$/.test file)
   log files
   try
-    cmd ='./node_modules/.bin/docco-husky' 
+    cmd ='./node_modules/.bin/docco-husky'
     docco = spawn cmd, files
     docco.stdout.pipe process.stdout
     docco.stderr.pipe process.stderr
@@ -78,7 +78,7 @@ task 'test', 'Run Mocha tests', ->
 task 'dev', 'start dev env', ->
   # watch_coffee
   options = ['-c', '-b', '-w', '-o', '.app', 'src']
-  cmd = which.sync 'coffee'  
+  cmd = which.sync 'coffee'
   coffee = spawn cmd, options
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
@@ -88,24 +88,24 @@ task 'dev', 'start dev env', ->
   supervisor = spawn 'node', [
     './node_modules/supervisor/lib/cli-wrapper.js',
     '-w',
-    '.app,views', 
-    '-e', 
-    'js|pug', 
+    '.app,views',
+    '-e',
+    'js|pug',
     'server'
   ]
   supervisor.stdout.pipe process.stdout
   supervisor.stderr.pipe process.stderr
   log 'Watching js files and running server', green
-  
+
 task 'debug', 'start debug env', ->
   # watch_coffee
   options = ['-c', '-b', '-w', '-o', '.app', 'src']
-  cmd = which.sync 'coffee'  
+  cmd = which.sync 'coffee'
   coffee = spawn cmd, options
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
   log 'Watching coffee files', green
-  
+
   # run debug mode
   app = spawn 'node', [
     '--debug',
@@ -122,7 +122,7 @@ task 'debug', 'start debug env', ->
   chrome.stdout.pipe process.stdout
   chrome.stderr.pipe process.stderr
   log 'Debugging server', green
-  
+
 option '-n', '--name [NAME]', 'name of model to `scaffold`'
 task 'scaffold', 'scaffold model/controller/test', (options) ->
   if not options.name?
@@ -131,7 +131,6 @@ task 'scaffold', 'scaffold model/controller/test', (options) ->
   log "Scaffolding `#{options.name}`", green
   scaffold = require './scaffold'
   scaffold options.name
-  
 
 
-  
+

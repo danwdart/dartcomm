@@ -25,7 +25,7 @@ module.exports =
 
 	getRegister: (req, res) ->
 		res.render 'register',
-		
+
 	postRegister: (req, res) ->
 		post = req.body
 
@@ -43,7 +43,7 @@ module.exports =
 			if user
 				req.flash 'error', 'Sorry - username was already taken.'
 				return res.redirect '/login/register'
-			
+
 			user = new User(
 				_id: post.username.toString()
 				password: post.password.toString()
