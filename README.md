@@ -1,12 +1,12 @@
 # Dart Comm
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/danwdart/dartcomm.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/emberdart/dartcomm.svg)](https://greenkeeper.io/)
 
 ## A Communications Programme.
 
 ### DEPRECATED.
 
-This program is deprecated in favour of https://github.com/danwdart/pcomm
+This program is deprecated in favour of https://github.com/emberdart/pcomm
 
 The items in this program are severely deprecated and are only kept around for legacy purposes.
 

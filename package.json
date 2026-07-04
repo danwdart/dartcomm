@@ -1,7 +1,7 @@
 {
   "name": "DartComm",
   "version": "0.0.1",
-  "author": "Dan Dart <dartcomm@dandart.co.uk> (http://dandart.co.uk)",
+  "author": "Ember Dart <dartcomm@emberdart.co.uk> (http://emberdart.co.uk)",
   "scripts": {
     "install": "node node_modules/coffee-script/bin/cake build",
     "start": "node server.js",
